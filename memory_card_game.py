@@ -37,6 +37,15 @@ matched = []
 font = pygame.font.Font(None, 36)
 score = 0
 
+# Create cards
+for color in COLORS * 2:  # Each color appears twice
+    cards.append(color)
+random.shuffle(cards)
+
+# Initialize revealed and matched lists
+revealed = [False] * len(cards)
+matched = [False] * len(cards)
+
 clock = pygame.time.Clock()
 while True:
     for event in pygame.event.get():
