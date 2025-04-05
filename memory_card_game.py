@@ -111,12 +111,11 @@ while True:
     
     # Drawing
     screen.fill(WHITE)
-                    # Draw score
-score_text = font.render(f"Score: {score}", True, BLACK)
-screen.blit(score_text, (10, 10))
+    
+    
+    # Draw score
+    score_text = font.render(f"Score: {score}", True, BLACK)
+    screen.blit(score_text, (10, 10))
 
-
-                    
-          screen.fill(WHITE)
     pygame.display.flip()
     clock.tick(60)
