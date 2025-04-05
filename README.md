@@ -22,15 +22,15 @@ A classic memory matching game built with Pygame where players flip cards to fin
    git clone https://github.com/Sasank-5716/Memory_card_game.git
    cd memory-card-game
    
-Install Pygame:
+## Install Pygame:
 pip install pygame
-How to Play
-Run the game:
 
+## How to Play
 
+# Run the game:
 python memory_game.py
 
-Gameplay:
+# Gameplay:
 
 Click on any card to flip it
 
@@ -44,7 +44,7 @@ The game ends when all pairs are found
 
 The game automatically resets after winning
 
-Controls
+# Controls
 Left mouse click: Flip cards
 
 Close window: Quit game
@@ -54,8 +54,7 @@ Scoring
 
 Score is displayed in the top-left corner
 
-Project Structure
-Copy
+## Project Structure
 memory-card-game/
 ├── memory_game.py    # Main game code
 ├── README.md         # This file
