@@ -60,13 +60,63 @@ for i in range(len(cards)):
     
     pygame.draw.rect(screen, BLACK, (card_x, card_y, card_width, card_height), 2)
 
+#Game loop
 clock = pygame.time.Clock()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
     
+            # Check which card was clicked
+            for i in range(len(cards)):
+                row = i // cols
+                col = i % cols
+                card_x = col * (card_width + margin) + margin
+                card_y = row * (card_height + margin) + margin
+        
+                if (card_x <= mouse_x <= card_x + card_width and 
+                    card_y <= mouse_y <= card_y + card_height and 
+                    not revealed[i] and len(selected) < 2 and not matched[i]):
+                    revealed[i] = True
+                    selected.append(i)
+            
+                    # Check for match
+                    if len(selected) == 2:
+                        if cards[selected[0]] == cards[selected[1]]:
+                            matched[selected[0]] = True
+                            matched[selected[1]] = True
+                            score += 10
+                        else:
+                            # Wait a bit before hiding
+                            pygame.time.delay(500)
+                            for idx in selected:
+                                revealed[idx] = False
+                        selected = []
+
+    # Check win condition
+    if all(matched):
+        win_text = font.render("You Win! Final Score: " + str(score), True, BLACK)
+        screen.blit(win_text, (WIDTH//2 - 150, HEIGHT//2))
+        pygame.display.flip()
+        pygame.time.delay(2000)
+        # Reset game
+        random.shuffle(cards)
+        revealed = [False] * len(cards)
+        matched = [False] * len(cards)
+        selected = []
+        score = 0
+    
+    # Drawing
     screen.fill(WHITE)
+                    # Draw score
+score_text = font.render(f"Score: {score}", True, BLACK)
+screen.blit(score_text, (10, 10))
+
+
+                    
+          screen.fill(WHITE)
     pygame.display.flip()
     clock.tick(60)
