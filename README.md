@@ -20,13 +20,13 @@ A classic memory matching game built with Pygame where players flip cards to fin
 
 1. Clone the repository:
    git clone https://github.com/Sasank-5716/Memory_card_game.git
+
    cd memory-card-game
    
 ## Install Pygame:
 pip install pygame
 
 ## How to Play
-
 # Run the game:
 python memory_game.py
 
