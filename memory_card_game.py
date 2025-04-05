@@ -46,6 +46,20 @@ random.shuffle(cards)
 revealed = [False] * len(cards)
 matched = [False] * len(cards)
 
+# Draw cards
+for i in range(len(cards)):
+    row = i // cols
+    col = i % cols
+    card_x = col * (card_width + margin) + margin
+    card_y = row * (card_height + margin) + margin
+    
+    if revealed[i] or matched[i]:
+        pygame.draw.rect(screen, cards[i], (card_x, card_y, card_width, card_height))
+    else:
+        pygame.draw.rect(screen, GRAY, (card_x, card_y, card_width, card_height))
+    
+    pygame.draw.rect(screen, BLACK, (card_x, card_y, card_width, card_height), 2)
+
 clock = pygame.time.Clock()
 while True:
     for event in pygame.event.get():
